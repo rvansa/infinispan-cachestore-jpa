@@ -3,9 +3,10 @@
    <modelVersion>4.0.0</modelVersion>
    <parent>
       <groupId>org.infinispan</groupId>
-      <artifactId>infinispan-cachestore-parent</artifactId>
-      <version>6.0.0-SNAPSHOT</version>
+      <artifactId>infinispan-persistence-parent</artifactId>
+      <version>7.0.0-SNAPSHOT</version>
    </parent>
+   <groupId>org.infinispan</groupId>
    <artifactId>infinispan-cachestore-jpa</artifactId>
    <packaging>bundle</packaging>
    <name>Infinispan JPA CacheStore</name>
@@ -17,6 +18,8 @@
       <version.hibernate.entitymanager>${version.hibernate.core}</version.hibernate.entitymanager>
       <version.hibernate.javax.persistence>1.0.1.Final</version.hibernate.javax.persistence>
       <version.mysql.driver>5.1.19</version.mysql.driver>
+      <!-- Tests against single database cannot be executed in paralllel -->
+      <infinispan.test.parallel.threads>1</infinispan.test.parallel.threads>
    </properties>
 
    <build>
