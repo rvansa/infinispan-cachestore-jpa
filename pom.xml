@@ -11,7 +11,7 @@
    <packaging>bundle</packaging>
    <name>Infinispan JPA CacheStore</name>
    <description>Infinispan JPA CacheStore module</description>
-   
+
    <properties>
       <version.h2.driver>1.3.166</version.h2.driver>
       <version.hibernate.core>4.2.2.Final</version.hibernate.core>
@@ -68,5 +68,46 @@
          <scope>test</scope>
       </dependency>
    </dependencies>
+
+   <profiles>
+      <profile>
+         <id>h2</id>
+         <activation>
+            <activeByDefault>true</activeByDefault>
+         </activation>
+         <build>
+            <plugins>
+               <plugin>
+                  <groupId>org.apache.maven.plugins</groupId>
+                  <artifactId>maven-surefire-plugin</artifactId>
+                  <configuration>
+                     <systemPropertyVariables>
+                        <connection.url>jdbc:h2:mem:test;DB_CLOSE_DELAY=-1</connection.url>
+                        <driver.class>org.h2.Driver</driver.class>
+                     </systemPropertyVariables>
+                  </configuration>
+               </plugin>
+            </plugins>
+         </build>
+      </profile>
+      <profile>
+         <id>mysql</id>
+         <build>
+            <plugins>
+               <plugin>
+                  <groupId>org.apache.maven.plugins</groupId>
+                  <artifactId>maven-surefire-plugin</artifactId>
+                  <configuration>
+                     <systemPropertyVariables>
+                        <connection.url>jdbc:mysql://localhost:3306/ispn_jpa_test</connection.url>
+                        <driver.class>com.mysql.jdbc.Driver</driver.class>
+                        <db.username>root</db.username>
+                     </systemPropertyVariables>
+                  </configuration>
+               </plugin>
+            </plugins>
+         </build>
+      </profile>
+   </profiles>
 </project>
 
