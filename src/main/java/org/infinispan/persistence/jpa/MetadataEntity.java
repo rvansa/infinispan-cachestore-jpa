@@ -3,6 +3,7 @@ package org.infinispan.persistence.jpa;
 import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
+import javax.persistence.Lob;
 import javax.persistence.Table;
 import javax.persistence.Version;
 
@@ -20,8 +21,10 @@ class MetadataEntity {
 
    @EmbeddedId
    private MetadataEntityKey key;
+   @Lob
    @Column(length = 65535)
    private byte[] keyBytes;
+   @Lob
    @Column(length = 65535)
    private byte[] metadata;
    @Column(name = EXPIRATION)
