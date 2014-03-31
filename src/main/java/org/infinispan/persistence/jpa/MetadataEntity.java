@@ -18,11 +18,12 @@ import org.infinispan.commons.io.ByteBuffer;
 @Table(name = "`__ispn_metadata__`")
 class MetadataEntity {
    public static final String EXPIRATION = "expiration";
+   public static final String KEY_BYTES = "keyBytes";
 
    @EmbeddedId
    private MetadataEntityKey key;
    @Lob
-   @Column(length = 65535)
+   @Column(name = KEY_BYTES, length = 65535)
    private byte[] keyBytes;
    @Lob
    @Column(length = 65535)

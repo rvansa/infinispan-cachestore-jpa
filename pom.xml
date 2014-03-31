@@ -40,20 +40,23 @@
    </build>
    <dependencies>
       <dependency>
+         <groupId>org.hibernate</groupId>
+         <artifactId>hibernate-core</artifactId>
+         <version>${version.hibernate.core}</version>
+      </dependency>
+      <dependency>
          <groupId>org.hibernate.javax.persistence</groupId>
          <artifactId>hibernate-jpa-2.0-api</artifactId>
          <version>${version.hibernate.javax.persistence}</version>
-         <scope>provided</scope>
-      </dependency>
-      <dependency>
-         <groupId>org.slf4j</groupId>
-         <artifactId>slf4j-simple</artifactId>
-         <scope>test</scope>
       </dependency>
       <dependency>
          <groupId>org.hibernate</groupId>
          <artifactId>hibernate-entitymanager</artifactId>
          <version>${version.hibernate.entitymanager}</version>
+      </dependency>
+      <dependency>
+         <groupId>org.slf4j</groupId>
+         <artifactId>slf4j-simple</artifactId>
          <scope>test</scope>
       </dependency>
    </dependencies>
